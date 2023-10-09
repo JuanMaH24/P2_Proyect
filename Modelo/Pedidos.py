@@ -1,7 +1,9 @@
+import datetime
+
 class Pedidos():
 
-    def __init__(self, fecha_factura):
-        self.__fecha_factura = fecha_factura
+    def __init__(self):
+        self.__fecha_factura = datetime.date.today()
         self.__valor_total_pedido = 0
         self.__producto_control = [] 
         self.__antibiotico = []

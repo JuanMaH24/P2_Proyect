@@ -19,6 +19,8 @@ class Clientes():
 
   @cedula.setter
   def cedula(self, cedula):
+    if not cedula.isdigit():
+      raise ValueError("La cédula debe contener solo números.")
     self.__cedula = cedula
 
   @property

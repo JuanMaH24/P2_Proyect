@@ -1,6 +1,8 @@
 class ProductosDeControl():
   
     def __init__(self, registro_ICA, nombre_producto, frecuencia_aplicacion, valor_producto):
+        if valor_producto < 0:
+            raise ValueError("El valor no puede ser negativo.")
         self.__nombre_producto = nombre_producto
         self.__registro_ICA = registro_ICA
         self.__frecuencia_aplicacion = frecuencia_aplicacion
@@ -36,4 +38,6 @@ class ProductosDeControl():
 
     @valor_producto.setter
     def valor_producto(self, valor_producto):
+        if valor_producto < 0:
+            raise ValueError("El valor no puede ser negativo.")
         self.__valor_producto = valor_producto
