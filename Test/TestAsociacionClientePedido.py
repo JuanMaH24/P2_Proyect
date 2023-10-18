@@ -3,7 +3,7 @@ from Modelo.Clientes import Clientes
 from Modelo.Pedidos import Pedidos
 from Modelo.ControlesPlagas import ControlesPlagas
 from Modelo.ControlFertilizantes import ControlFertilizantes
-from Modelo.Antibioticos import Antibioticos
+from Modelo.Antibioticos import Antibioticos 
 
 
 class Test_relacion_clientes_pedidos:
