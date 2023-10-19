@@ -26,7 +26,7 @@ class CrudPedidos():
             if factura in cliente.factura:
                 mensaje = "Factura encontrada"
                 return {"Mensaje": mensaje, "Factura": factura}
-        mensaje = "No se encontró la f"
+        mensaje = "No se encontró la factura"
         return {"Mensaje": mensaje, "Cliente": None}
 
 

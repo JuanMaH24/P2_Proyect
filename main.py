@@ -28,8 +28,45 @@ OPCIONES PRODUCTOS
 4. Visualizar Porductos control plagas.
    4.1 Crear fertilizantes
    4.2 Crear control plagas
-   4.3 
-   Eliminar Prodcuctos 
-   4.2 
-5. 
+   4.3 Eliminar Productos 
+   
+OPCIONES ANTIBIOTICOS
+
+  5.1 Crear un antibiotico
+  5.2 Visualizar todos los anbioticos
+  5.3 Buscar un antibiotico
+  5.4 Eliminar Antibiotico
+  
 """
+import sys
+import os
+myDir = os.getcwd()
+sys.path.append(myDir)
+
+
+def menu(opcion):
+
+    def verificar_numero(num):
+        try:
+            num=float(num)
+            return True
+        except ValueError:
+            return False
+    print("1.Desplegar opciones para Clientes")
+    print("2.Desplegar opciones para manejo de Productos")
+    print("3.Desplegar opciones para manejo Antibioticos")
+    opcion= input("Ingrese una opcion para deplegar las opciones de acuerdoa a su necesidad:")
+    if verificar_numero(opcion) == True:
+        if opcion == "1": 
+            
+        elif opcion == "2":
+       
+        elif opcion == "3":
+
+        elif opcion == "4":
+
+        else:
+            print("Gracias por usar nuestros servicios")
+    else:
+        print("Opcion invalida, ingrese una opcion valida.")
+menu(0)
