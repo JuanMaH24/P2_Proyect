@@ -1,5 +1,4 @@
 """" 
-Accion: Mos
 Acccion: Crear factura
 1. pedimos ingresar la cedula del cliente
 2. buscar cedula

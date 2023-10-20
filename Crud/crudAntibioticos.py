@@ -27,7 +27,7 @@ class CrudAntibiotico():
     
     def buscar_antibioticos(self,nombre_producto=None):
         for antibiotico in self.antibioticos:
-            if nombre_producto.upper == antibiotico.nombre_producto:
+            if nombre_producto.upper == antibiotico.nombre_producto.upper:
                 mensaje = "Antibiotico encontrado"
                 return {"Mensaje": mensaje, "Antibiotico": antibiotico}
             

@@ -16,20 +16,20 @@ class CrudProductosControl():
             nuevo_producto_control = ControlFertilizantes(registro_ICA, nombre_producto, frecuencia_aplicacion, valor_producto, periodo_carencia)
             self.productos_control.append(nuevo_producto_control)
             mensaje = "Fertilizante creado exitosamente"
-            return {"Mensaje": mensaje, "Producto_Control": nuevo_producto_control}
+            return {"Mensaje": mensaje, "Producto_control": nuevo_producto_control}
         except ValueError as error:
             mensaje = str("No se pudo crear el producto")
-            return {"Mensaje": mensaje, "Producto_Control": None}
+            return {"Mensaje": mensaje, "Producto_control": None}
     
     def create_control_plagas(self, registro_ICA = None, nombre_producto = None, frecuencia_aplicacion = None, valor_producto = None, ultima_aplicacion = None):
         try:
             nuevo_producto_control = ControlesPlagas(registro_ICA, nombre_producto, frecuencia_aplicacion, valor_producto, ultima_aplicacion)
             self.productos_control.append(nuevo_producto_control)
             mensaje = "Control de Plagas creado exitosamente"
-            return {"Mensaje": mensaje, "Producto_Control": nuevo_producto_control}
+            return {"Mensaje": mensaje, "Producto_control": nuevo_producto_control}
         except ValueError as error:
             mensaje = str("No se pudo crear el producto:")
-            return {"Mensaje": mensaje, "Producto_Control": None}
+            return {"Mensaje": mensaje, "Producto_control": None}
 
     def read_productos_control(self):
         productos_control = self.productos_control
@@ -37,12 +37,12 @@ class CrudProductosControl():
     
     def buscar_producto_control(self, registro_ICA = None):
         for producto_control in self.productos_control:
-            if registro_ICA.upper == producto_control.nombre_producto:
+            if str(registro_ICA).upper == str(producto_control.registro_ICA).upper:
                 mensaje = "Producto de Control encontrado"
-                return {"Mensaje": mensaje, "Producto_Control": producto_control}
+                return {"Mensaje": mensaje, "Producto_control": producto_control}
             
         mensaje = "No se encontró el Producto de Control"
-        return {"Mensaje": mensaje, "Producto_Control": None}
+        return {"Mensaje": mensaje, "Producto_control": None}
     
 
     def update_producto_control(self, registro_ICA = None, nombre_producto = None, frecuencia_aplicacion = None, valor_producto = None, dato_control_plagas_o_fertilizante = None):
@@ -56,10 +56,10 @@ class CrudProductosControl():
             except:
                 producto_control["Producto_control"].ultima_aplicacion = dato_control_plagas_o_fertilizante
             mensaje = "Producto de control actualizado correctamente"
-            return {"Mensaje": mensaje, "Producto_Control": producto_control["Producto_control"]}
+            return {"Mensaje": mensaje, "Producto_control": producto_control["Producto_control"]}
         else:
             mensaje = "Producto de control no encontrado"
-            return {"Mensaje": mensaje, "Producto_Control": None}
+            return {"Mensaje": mensaje, "Producto_control": None}
         
     # def update_control_plaga(self, registro_ICA = None, nombre_producto = None, frecuencia_aplicacion = None, valor_producto = None, ultima_aplicacion = None):
     #     control_plaga = self.buscar_producto_control(registro_ICA)
@@ -70,10 +70,10 @@ class CrudProductosControl():
     #         control_plaga["Producto_control"].ultima_aplicacion = ultima_aplicacion
             
     #         mensaje = "Fertilizante actualizado correctamente"
-    #         return {"Mensaje": mensaje, "Producto_Control": control_plaga["Producto_control"]}
+    #         return {"Mensaje": mensaje, "Producto_control": control_plaga["Producto_control"]}
     #     else:
     #         mensaje = "Fertilizante no encontrado"
-    #         return {"Mensaje": mensaje, "Producto_Control": None}
+    #         return {"Mensaje": mensaje, "Producto_control": None}
         
     def delete_producto_control(self, registro_ICA = None):
         producto_control = self.buscar_producto_control(registro_ICA)

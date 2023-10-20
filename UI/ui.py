@@ -10,6 +10,7 @@ sys.path.append(myDir)
 from Crud.crudAntibioticos import CrudAntibiotico
 from Crud.crudClientes import CrudClientes
 from Crud import crudPedidos
+
 from Crud.crudProductosControl import CrudProductosControl
 
 clientes = CrudClientes()
@@ -48,8 +49,8 @@ def menu_opciones(opcion):
 
 #--------------------------------------------------------------------------------------    
 def operaciones_clientes(opcion2):
-    print("\n\n--------------OPCIONES CLIENTES-------------------")
     while opcion2 != "6":
+        print("\n\n--------------OPCIONES CLIENTES-------------------")
         print("1.Crear un Pedido (factura)")
         print("2.Crear Cliente")
         print("3.Visualizar Clientes con sus pedidos")
@@ -59,7 +60,7 @@ def operaciones_clientes(opcion2):
         opcion2= input("Ingrese una opcion:")
         if verificar_numero(opcion2) == True:
             if opcion2 == "1":
-                print("hola")
+                crear_pedido()
             elif opcion2 == "2":
                 crear_Cliente()
             elif opcion2 == "3":
@@ -74,8 +75,8 @@ def operaciones_clientes(opcion2):
             print("Opcion invalida, ingrese una opcion valida.")  
 #------------------------------------------------------------------------------------------------------
 def operaciones_productos(opcion2):
-    print("\n\n--------------OPCIONES PRODUCTOS CONTROL-------------------")
     while opcion2 != "5": 
+        print("\n\n--------------OPCIONES PRODUCTOS CONTROL-------------------")
         print("1.Añadir nuevos productos")
         print("2.Visualizar Porductos de control.")
         print("3.Actualizar un producto de control")
@@ -98,8 +99,8 @@ def operaciones_productos(opcion2):
             print("Opcion invalida, ingrese una opcion valida.")      
 #-----------------------------------------------------------------------------------------------
 def operaciones_antibioticos(opcion2):
-    print("\n\n--------------OPCIONES ANTIBIOTICOS-------------------")
     while opcion2 != "4":
+        print("\n\n--------------OPCIONES ANTIBIOTICOS-------------------")
         print("1.Crear un antibiotico")
         print("2.Visualizar todos los anbioticos")
         print("3.Eliminar Antibiotico")
@@ -119,7 +120,17 @@ def operaciones_antibioticos(opcion2):
 
 
 #----------------------------------------------------------------------------------------------------------------
-def 
+
+
+"""
+Acccion: Crear factura
+1. pedimos ingresar la cedula del cliente
+2. buscar cedula
+3 Si existe el cliente
+  3.1  Crear una factura CRUD
+  3.2  Asociar factura al cliente CRUD
+ 
+"""
 def crear_Cliente():
     cedula_cliente= input("Ingrese la cedula del cliente:")
     while verificar_numero(cedula_cliente) == False :
@@ -128,15 +139,16 @@ def crear_Cliente():
     nombre_cliente= input("Ingrese el nombre del cliente:")
     
     cliente_buscado = clientes.buscar_cedula(cedula_cliente)
-    if cliente_buscado["Cliente"].cedula == cedula_cliente:
-        print(cliente_buscado["Mensaje"])
-        print("Este cliente ya existe \n")
+    if cliente_buscado["Cliente"] != None:
+        if cliente_buscado["Cliente"].cedula == cedula_cliente:
+            print(cliente_buscado["Mensaje"])
+            print("Este cliente ya existe \n")
     else:
         cliente_creado=clientes.create_cliente(nombre_cliente,cedula_cliente)
         print(cliente_creado["Mensaje"])
 
 def mostrar_cliente(cliente):
-    print(cliente.nombre + " identificado con el número: " + cliente.cedula)
+    print(cliente.nombre_cliente + " identificado con el número: " + cliente.cedula)
     for facturas_cliente in cliente.factura:
         print("Factura del " + str(facturas_cliente.fecha_factura) + ": \n")
 
@@ -152,11 +164,13 @@ def mostrar_cliente(cliente):
     
 
 def visualizar_clientes():
+    if len(clientes.read()) == 0:
+        print("No existen clientes registrados")
     for cliente in clientes.read():
         mostrar_cliente(cliente)
 
 def buscar_cliente():
-    cedula_cliente=print("Ingrese la cedula del cliente que desea buscar")
+    cedula_cliente=input("Ingrese la cedula del cliente que desea buscar")
     while verificar_numero(cedula_cliente) == False :
         cedula_cliente= input("Ingrese la cedula del cliente:")
     cliente_buscado = clientes.buscar_cedula(cedula_cliente)
@@ -175,7 +189,7 @@ def eliminar_cliente():
 
 def crear_producto():
     tipo_producto= str(input("¿Qué tipo de producto desea crear?\nPara producto tipo control plagas, escriba CP\nPara producto tipo fertilizante, escriba F: \n")).upper()
-    registro_ICA = input("\nIngrese el registro ICA del control de plagas: ")
+    registro_ICA = str(input("\nIngrese el registro ICA del control de plagas: "))
     nombre_producto= input("\nIngrese el nombre del control de plagas: ")
     frecuencia_aplicacion = input("\nIngrese la frecuencia de aplicacion: ")
     while verificar_numero(frecuencia_aplicacion) == False :
@@ -190,12 +204,13 @@ def crear_producto():
             ultima_aplicacion =input("Ingrese hace cuantos días fue la última aplicacion valor:")
     
         producto_buscado = productos.buscar_producto_control(registro_ICA)
-        if producto_buscado["Producto_control"].registro_ICA == registro_ICA:
-            print(producto_buscado["Mensaje"])
-            print("Este producto ya existe \n")
+        if producto_buscado["Producto_control"] != None:
+            if producto_buscado["Producto_control"].registro_ICA == registro_ICA:
+                print(producto_buscado["Mensaje"])
+                print("Este producto ya existe \n")
         else:
             producto_creado = productos.create_control_plagas(registro_ICA,nombre_producto, frecuencia_aplicacion, int(valor_producto),ultima_aplicacion)
-            if producto_creado["Producto_Control"] == None:
+            if producto_creado["Producto_control"] == None:
                 print(producto_creado["Mensaje"])
     
     elif tipo_producto == "F": 
@@ -203,12 +218,13 @@ def crear_producto():
         while verificar_numero(periodo_de_carencia) == False :
             periodo_de_carencia =input("Ingrese hace el número de días que deben transcurrir entre la ultima aplicacion y la cosecha:")
         producto_buscado = productos.buscar_producto_control(registro_ICA)
-        if producto_buscado["Producto_control"].registro_ICA == registro_ICA:
-            print(producto_buscado["Mensaje"])
-            print("Este producto ya existe \n")
+        if producto_buscado["Producto_control"] != None:
+            if producto_buscado["Producto_control"].registro_ICA == registro_ICA:
+                print(producto_buscado["Mensaje"])
+                print("Este producto ya existe \n")
         else:
             producto_creado = productos.create_control_fertilizante(registro_ICA,nombre_producto,frecuencia_aplicacion,int(valor_producto),periodo_de_carencia)
-            if producto_creado["Producto_Control"] == None:
+            if producto_creado["Producto_control"] == None:
                 print(producto_creado["Mensaje"])
     else:
         print("Ingrese un tipo de producto valido")
@@ -232,7 +248,7 @@ def visualizar_productos():
         i += 1
 
 def actualizar_producto():
-    registro_ICA = input("Ingrese el registro ICA del producto que desea actualizar")
+    registro_ICA = str(input("Ingrese el registro ICA del producto que desea actualizar"))
     producto_buscado = productos.update_producto_control(registro_ICA)
     if producto_buscado["Producto_control"] != None:
         nombre_producto= input("\nIngrese el nuevo nombre del producto de control: ")
@@ -296,11 +312,47 @@ def visualizar_antibioticos():
         mostrar_antibiotico(antibiotico)
         i += 1   
 
+
 def eliminar_antibioticos():
-    nombre_producto= str(input("Ingrese el nombre del antibiotico que desea crear:")).upper
+    nombre_producto= str(input("Ingrese el nombre del antibiotico que desea eliminar:")).upper
     antibiotico_buscado = antibioticos.buscar_antibioticos(nombre_producto)
     if antibiotico_buscado["Antibiotico"].nombre_producto == nombre_producto:
         antibiotico_eliminado= antibioticos.delete_antibiotico(nombre_producto)
         print("\n" + str (antibiotico_eliminado["Mensaje"]))
     else:
         print("Este producto no existe")
+
+#-------------------------------------------------------------------------------------------
+def crear_pedido():
+    cedula_cliente= input("Ingrese la cedula del cliente:")
+    while verificar_numero(cedula_cliente) == False :
+        cedula_cliente= input("Ingrese la cedula del cliente:") 
+    cliente_buscado = clientes.buscar_cedula(cedula_cliente)
+    if cliente_buscado["Cliente"] != None:
+        factura_creada = crudPedidos.create_factura()
+        opcion_productos = "S"
+        while opcion_productos == "S":
+            tipo_producto = str(input("¿Qué tipo de producto desea ingresa?.\nPara fertilizante ingrese F\nPara producto de contro ingrese PC: ")).upper()
+            if tipo_producto == 'F':       
+                nombre_producto= str(input("\nIngrese el nombre del antibiotico que desea añadir a la facura:")).upper()
+                antibiotico_buscado = antibioticos.buscar_antibioticos(nombre_producto)
+                if antibiotico_buscado["Antibiotico"] != None:
+                    factura_creada = crudPedidos.actualizar_antibiotico(factura_creada["Factura"],antibiotico_buscado["Antibiotico"])
+                else: 
+                    print("No se puede añadir, ya que no se encontró este antibiotico")
+            elif tipo_producto == 'CP':           
+                registro_ICA = str(input("\nIngrese el registro ICA del producto que desea añadir a la factura:")).upper()
+                registro_buscado = productos.buscar_producto_control(registro_ICA)
+                if registro_buscado["Producto_control"] != None:
+                    factura_creada = crudPedidos.actualizar_productos_control(factura_creada["Factura"], registro_buscado["Producto_control"])
+                else:
+                    print("\nEste producto no existe")
+            else:
+                print("\nEl tipo ingresado de producto no existe")
+
+            opcion_productos = str(input("\nDesea añadir mas productos a la factura?:"))
+        clientes.update_factura_cliente(cedula_cliente,factura_creada["Factura"])
+        print("\nFactura creada y asociada correctamente")
+    else:
+        print(cliente_buscado["Mensaje"])
+        print("No puede crear una factura sin un cliente ya creado \n")
