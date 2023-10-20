@@ -6,17 +6,21 @@ sys.path.append(myDir)
 from Modelo.Antibioticos import Antibioticos
 
 
-class crudAntibiotico():
+class CrudAntibiotico():
     def __init__(self):
         self.antibioticos = []
     
 
     def create_antibiotico(self,nombre_producto=None, dosis_antibiotico=None, tipo_animal=None, valor_producto=None):
-        nuevo_antibiotico= Antibioticos(nombre_producto,dosis_antibiotico,tipo_animal,valor_producto)
-        self.antibioticos.append(nuevo_antibiotico)
-        mensaje = "Antibiotico creado exitosamente"
-        return {"Mensaje": mensaje, "Antibiotico": nuevo_antibiotico}
-    
+        try:
+            nuevo_antibiotico= Antibioticos(nombre_producto,dosis_antibiotico,tipo_animal,valor_producto)
+            self.antibioticos.append(nuevo_antibiotico)
+            mensaje = "Antibiotico creado exitosamente"
+            return {"Mensaje": mensaje, "Antibiotico": nuevo_antibiotico}
+        except ValueError as error:
+            mensaje = str("No se pudo crear el nuevo antibiotico: ")
+            return {"Mensaje": mensaje, "Antibiotico": None}
+        
     def read(self):
         Antibioticos = self.antibioticos
         return Antibioticos
