@@ -332,15 +332,15 @@ def crear_pedido():
         factura_creada = crudPedidos.create_factura()
         opcion_productos = "S"
         while opcion_productos == "S":
-            tipo_producto = str(input("¿Qué tipo de producto desea ingresa?.\nPara fertilizante ingrese F\nPara producto de contro ingrese PC: ")).upper()
-            if tipo_producto == 'F':       
+            tipo_producto = str(input("¿Qué tipo de producto desea ingresa?.\nPara ANTIBIOTICO ingrese A\nPara producto de contro ingrese PC: ")).upper()
+            if tipo_producto == 'A':       
                 nombre_producto= str(input("\nIngrese el nombre del antibiotico que desea añadir a la facura:")).upper()
                 antibiotico_buscado = antibioticos.buscar_antibioticos(nombre_producto)
                 if antibiotico_buscado["Antibiotico"] != None:
                     factura_creada = crudPedidos.actualizar_antibiotico(factura_creada["Factura"],antibiotico_buscado["Antibiotico"])
                 else: 
                     print("No se puede añadir, ya que no se encontró este antibiotico")
-            elif tipo_producto == 'CP':           
+            elif tipo_producto == 'PC':           
                 registro_ICA = str(input("\nIngrese el registro ICA del producto que desea añadir a la factura:")).upper()
                 registro_buscado = productos.buscar_producto_control(registro_ICA)
                 if registro_buscado["Producto_control"] != None:
