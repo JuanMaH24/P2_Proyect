@@ -37,7 +37,7 @@ class CrudProductosControl():
     
     def buscar_producto_control(self, registro_ICA = None):
         for producto_control in self.productos_control:
-            if str(registro_ICA).upper == str(producto_control.registro_ICA).upper:
+            if str(registro_ICA).upper() == str(producto_control.registro_ICA).upper():
                 mensaje = "Producto de Control encontrado"
                 return {"Mensaje": mensaje, "Producto_control": producto_control}
             

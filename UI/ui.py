@@ -154,7 +154,7 @@ def mostrar_cliente(cliente):
 
         for producto_control_factura in facturas_cliente.producto_control:
             print("Producto Id: "+ str(producto_control_factura.registro_ICA))
-            print("Nombre: " + str(producto_control_factura.nombreProducto))
+            print("Nombre: " + str(producto_control_factura.nombre_producto))
             print("Precio: " + str(producto_control_factura.valor_producto))
             
         for producto_antibiotico in facturas_cliente.antibiotico:
@@ -285,7 +285,7 @@ def eliminar_producto():
 #-----------------------------------------------------------------------------------------
 
 def crear_antibioticos():
-    nombre_producto= str(input("Ingrese el nombre del antibiotico que desea crear:")).upper
+    nombre_producto= str(input("Ingrese el nombre del antibiotico que desea crear:")).upper()
     antibiotico_buscado = antibioticos.buscar_antibioticos(nombre_producto)
     if antibiotico_buscado["Antibiotico"].nombre_producto == nombre_producto:
         print(antibiotico_buscado["Mensaje"])
@@ -314,7 +314,7 @@ def visualizar_antibioticos():
 
 
 def eliminar_antibioticos():
-    nombre_producto= str(input("Ingrese el nombre del antibiotico que desea eliminar:")).upper
+    nombre_producto= str(input("Ingrese el nombre del antibiotico que desea eliminar:")).upper()
     antibiotico_buscado = antibioticos.buscar_antibioticos(nombre_producto)
     if antibiotico_buscado["Antibiotico"].nombre_producto == nombre_producto:
         antibiotico_eliminado= antibioticos.delete_antibiotico(nombre_producto)
