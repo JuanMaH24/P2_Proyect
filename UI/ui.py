@@ -2,10 +2,6 @@ import sys
 import os
 myDir = os.getcwd()
 sys.path.append(myDir)
-import sys
-import os
-myDir = os.getcwd()
-sys.path.append(myDir)
 
 from Crud.crudAntibioticos import CrudAntibiotico
 from Crud.crudClientes import CrudClientes
@@ -249,7 +245,7 @@ def visualizar_productos():
 
 def actualizar_producto():
     registro_ICA = str(input("Ingrese el registro ICA del producto que desea actualizar"))
-    producto_buscado = productos.update_producto_control(registro_ICA)
+    producto_buscado = productos.buscar_producto_control(registro_ICA)
     if producto_buscado["Producto_control"] != None:
         nombre_producto= input("\nIngrese el nuevo nombre del producto de control: ")
         frecuencia_aplicacion = input("\nIngrese la nueva frecuencia de aplicacion: ")
@@ -275,7 +271,7 @@ def actualizar_producto():
 
 def eliminar_producto():
     registro_ICA = input("Ingrese el registro ICA del producto que desea eliminar")
-    producto_buscado = productos.update_producto_control(registro_ICA)
+    producto_buscado = productos.buscar_producto_control(registro_ICA)
     if producto_buscado["Producto_control"] != None:
         producto_eliminado = productos.delete_producto_control(registro_ICA)        
         print("\n" + str (producto_eliminado["Mensaje"]))

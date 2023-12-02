@@ -6,7 +6,7 @@ sys.path.append(myDir)
 from Modelo.Antibioticos import Antibioticos
 from Crud.ICrud import ICrud
 
-class ImpCrudAntibiotico(ICrud):
+class CrudAntibiotico(ICrud):
     def __init__(self):
         self.antibioticos = []
     

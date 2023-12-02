@@ -1,55 +1,38 @@
 from PyQt5  import  QtWidgets, uic
 app = QtWidgets.QApplication([])
 
-main = uic.loadUi("GUI/Qt_menuprincipal.ui")
+
+main = uic.loadUi("GUI/Templates/menu-principal.ui")
+menu_clientes = uic.loadUi("GUI/Templates/menu-clientes.ui")
+menu_antibiotico = uic.loadUi("GUI/Templates/menu-antibioticos.ui")
+menu_productos = uic.loadUi("GUI/Templates/menu-producto-control.ui") 
+
+def volver(ventana):
+    ventana.hide()
+    main.show()
+
+def start ():
+    main.show()
+    sys.exit(app.exec_())
+
+def menu_clientes_ventana():
+    main.hide()
+    menu_clientes.show()
+
+def menu_antibiotico_ventana():
+    main.hide()
+    menu_antibiotico.show()
+
+def menu_productos_ventana():
+    main.hide()
+    menu_productos.show()
 
 
-def main_categorias():
-    id = main.lineEdit.text()
-    name = main.lineEdit_2.text()
-    lastname = main.lineEdit_4.text()
-    tel = main.lineEdit_3.text()
-    mail = main.lineEdit_5.text()
-    if id and name and lastname and tel and mail:
-        succes.label.setText("Productor Agregado!!!")
-        succes_window()
-    else:
-        fail.label.setText("Error al Agregar Productor!!!")
-        fail_window()
+main.clientesBoton.clicked.connect(menu_clientes_ventana)
+main.prodControlBoton.clicked.connect(menu_productos_ventana)
+main.antibioticoBoton.clicked.connect(menu_antibiotico_ventana)
 
-def main_connect_farm():
-    cultive = main.comboBox.currentText()
-    locate = main.lineEdit_6.text()
-    castral = main.lineEdit_7.text()
-    if cultive and locate and castral:
-        succes.label.setText("Finca Agregada!!!")
-        succes_window()
-        main.comboBox.setCurrentIndex(-1)
-        main.lineEdit_6.setText("")
-        main.lineEdit_7.setText("")
-    else:
-        fail.label.setText("Error al Agregar Finca!!!")
-        fail_window()
-
-def succes_window():
-    fail.hide()
-    succes.show()
-
-def succes_window_hide():
-    succes.hide()
-
-
-def fail_window():
-    succes.hide()
-    fail.show()
-def fail_window_hide():
-    fail.hide()
-
-main.pushButton.clicked.connect(main_connect_user)
-main.pushButton_2.clicked.connect(main_connect_farm)
-fail.pushButton.clicked.connect(fail_window_hide)
-fail.pushButton_2.clicked.connect(fail_window_hide)
-succes.pushButton.clicked.connect(succes_window_hide)
-succes.pushButton_2.clicked.connect(succes_window_hide)
-main.show()
-app.exec()
+if __name__ == '__main__':
+    import sys
+    start()
+    
