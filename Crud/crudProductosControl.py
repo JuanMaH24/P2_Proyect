@@ -41,10 +41,8 @@ class CrudProductosControl(ICrud):
         for producto_control in self.productos_control:
             if str(registro_ICA).upper() == str(producto_control.registro_ICA).upper():
                 mensaje = "Producto de Control encontrado"
-                print(mensaje)
                 return {"Mensaje": mensaje, "Producto_control": producto_control}
         mensaje = "No se encontró el Producto de Control"
-        print(mensaje)
         return {"Mensaje": mensaje, "Producto_control": None}
     
 

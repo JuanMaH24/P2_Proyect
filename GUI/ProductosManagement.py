@@ -59,7 +59,6 @@ class ProductosManagement():
         else:
             tipo_propiedad="Periodo de Carencia"
             self.agregar_producto_control.propiedadTipoLabel.setText(tipo_propiedad)
-        print("este que es el anterior creoooo que solo se ejecuta una vez, no tendría sentido aun asi no deberia pasar nada")
         self.agregar_producto_control.agregarProductoBoton.clicked.connect(self.nuevo_producto)
 
     def eliminar_producto_ventana(self):
@@ -91,7 +90,6 @@ class ProductosManagement():
     # Menu Productos ##################################################
 
     def nuevo_producto(self):
-        print("Osea esto en este momento se esta ejecutando")
         registroICA= self.agregar_producto_control.registroICAInput.text()
         frecuenciaAplicacion=  self.agregar_producto_control.frecuenciaApInput.text()
         valorProducto=  self.agregar_producto_control.valorProductoInput.text()

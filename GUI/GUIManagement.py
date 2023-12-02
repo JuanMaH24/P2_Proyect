@@ -35,7 +35,6 @@ def menu_antibiotico_ventana():
     menu_antibiotico.mostrar_menu_antibiotico(main)
 
 def menu_productos_ventana():
-    print("cuantas veces pasa estoooooo")
     main.hide()
     menu_productos.mostrar_menu_productos(main)
 

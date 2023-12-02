@@ -59,7 +59,6 @@ class ClientesManagement():
         self.menu_clientes.hide()
         self.ver_todos_clientes.show()
         self.todos_clientes = main.clientes_registrados().copy()
-        print(self.todos_clientes)
         self.visualizar_clientes(self.todos_clientes)
 
     def buscar_cliente_ventana(self):
