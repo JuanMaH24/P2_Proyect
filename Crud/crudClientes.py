@@ -4,13 +4,14 @@ myDir = os.getcwd()
 sys.path.append(myDir)
 
 from Modelo.Clientes import Clientes
+from Crud.ICrud import ICrud
 
-class CrudClientes():
+class CrudClientes(ICrud):
     def __init__(self):
         self.clientes = []
     
-    def create_cliente(self, nombre = None, cedula_cliente = None):
-        nuevo_cliente = Clientes(nombre, cedula_cliente)
+    def create_cliente(self, **kwargs):
+        nuevo_cliente = Clientes(**kwargs)
         self.clientes.append(nuevo_cliente)
         mensaje = "Cliente creado exitosamente"
         return {"Mensaje": mensaje, "Cliente": nuevo_cliente}
@@ -24,7 +25,7 @@ class CrudClientes():
             if cedula_cliente == cliente.cedula:
                 mensaje = "Cliente encontrado"
                 return {"Mensaje": mensaje, "Cliente": cliente}
-            
+        
         mensaje= "No se encontró al cliente"
         return {"Mensaje": mensaje, "Cliente": None}
     
@@ -38,7 +39,7 @@ class CrudClientes():
         else:
             mensaje= "No se encontró al cliente"
             return {"Mensaje": mensaje, "Cliente": None}
-        
+
     def delete_cliente(self, cedula_cliente = None):
         cliente = self.buscar_cedula(cedula_cliente)
         if cliente["Cliente"] != None:

@@ -5,15 +5,16 @@ sys.path.append(myDir)
 
 from Modelo.ControlFertilizantes import ControlFertilizantes
 from Modelo.ControlesPlagas import ControlesPlagas
+from Crud.ICrud import ICrud
 
-class CrudProductosControl():
+class CrudProductosControl(ICrud):
 
     def __init__(self):
         self.productos_control = []
 
-    def create_control_fertilizante(self, registro_ICA = None, nombre_producto = None, frecuencia_aplicacion = None, valor_producto = None, periodo_carencia = None):
+    def create_control_fertilizante(self, **kwargs):
         try:
-            nuevo_producto_control = ControlFertilizantes(registro_ICA, nombre_producto, frecuencia_aplicacion, valor_producto, periodo_carencia)
+            nuevo_producto_control = ControlFertilizantes(**kwargs)
             self.productos_control.append(nuevo_producto_control)
             mensaje = "Fertilizante creado exitosamente"
             return {"Mensaje": mensaje, "Producto_control": nuevo_producto_control}
@@ -21,9 +22,9 @@ class CrudProductosControl():
             mensaje = str("No se pudo crear el producto")
             return {"Mensaje": mensaje, "Producto_control": None}
     
-    def create_control_plagas(self, registro_ICA = None, nombre_producto = None, frecuencia_aplicacion = None, valor_producto = None, ultima_aplicacion = None):
+    def create_control_plagas(self, **kwargs):
         try:
-            nuevo_producto_control = ControlesPlagas(registro_ICA, nombre_producto, frecuencia_aplicacion, valor_producto, ultima_aplicacion)
+            nuevo_producto_control = ControlesPlagas(**kwargs)
             self.productos_control.append(nuevo_producto_control)
             mensaje = "Control de Plagas creado exitosamente"
             return {"Mensaje": mensaje, "Producto_control": nuevo_producto_control}
@@ -36,6 +37,7 @@ class CrudProductosControl():
         return productos_control
     
     def buscar_producto_control(self, registro_ICA = None):
+        registro_ICA = registro_ICA.upper() if registro_ICA else None
         for producto_control in self.productos_control:
             if str(registro_ICA).upper() == str(producto_control.registro_ICA).upper():
                 mensaje = "Producto de Control encontrado"

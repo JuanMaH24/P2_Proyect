@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#centralwidget{background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0.232955 rgba(111, 111, 111, 255), stop:1 rgba(74, 74, 74, 255));
+background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0.232955 rgba(111, 111, 111, 255), stop:1 rgba(48, 48, 48, 255));}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>120</x>
+      <y>40</y>
+      <width>560</width>
+      <height>420</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#groupBox_2{background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0 rgba(175, 175, 175, 255));
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+border: none;}
+
+</string>
+    </property>
+    <property name="title">
+     <string/>
+    </property>
+    <widget class="QLabel" name="label">
+     <property name="geometry">
+      <rect>
+       <x>200</x>
+       <y>30</y>
+       <width>171</width>
+       <height>41</height>
+      </rect>
+     </property>
+     <property name="font">
+      <font>
+       <pointsize>16</pointsize>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: rgb(70, 70, 70);</string>
+     </property>
+     <property name="text">
+      <string>Producto Control</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="fertilizanteBoton">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>140</y>
+       <width>320</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#nuevoAntibioticoBoton{border-radius:10px;
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0 rgba(116, 116, 116, 255));
+border: 1px;
+border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(220, 220, 220, 255));}
+QWidget#nuevoAntibioticoBoton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(240, 240, 240, 255));
+	color: rgb(68, 68, 68);
+	border-color: rgb(68, 68, 68);
+	shadow: large;
+}</string>
+     </property>
+     <property name="text">
+      <string>Control de Fertilizantes</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="plagaBoton">
+     <property name="geometry">
+      <rect>
+       <x>120</x>
+       <y>230</y>
+       <width>320</width>
+       <height>51</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#verAntibioticosBoton{border-radius:10px;
+	font: 10pt &quot;MS Shell Dlg 2&quot;;
+color: rgb(255, 255, 255);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0 rgba(116, 116, 116, 255));
+border: 1px;
+border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(220, 220, 220, 255));}
+QWidget#verAntibioticosBoton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(240, 240, 240, 255));
+	color: rgb(68, 68, 68);
+	border-color: rgb(68, 68, 68);
+	shadow: large;
+}</string>
+     </property>
+     <property name="text">
+      <string>Control de Plagas</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="mensajeRetorno">
+     <property name="geometry">
+      <rect>
+       <x>140</x>
+       <y>390</y>
+       <width>271</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="volverMenuBoton">
+     <property name="geometry">
+      <rect>
+       <x>410</x>
+       <y>390</y>
+       <width>140</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#volverMenuBoton{border-radius:10px;
+color: rgb(255, 255, 255);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0 rgba(116, 116, 116, 255));
+border: 1px;
+border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(220, 220, 220, 255));}
+QWidget#volverMenuBoton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(240, 240, 240, 255));
+	color: rgb(68, 68, 68);
+	border-color: rgb(68, 68, 68);
+	shadow: large;
+}</string>
+     </property>
+     <property name="text">
+      <string>Volver al menú</string>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,330 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>500</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>800</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>800</width>
+    <height>500</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QWidget#centralwidget{background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0.232955 rgba(111, 111, 111, 255), stop:1 rgba(74, 74, 74, 255));
+background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0.232955 rgba(111, 111, 111, 255), stop:1 rgba(48, 48, 48, 255));}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QGroupBox" name="groupBox_2">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>760</width>
+      <height>460</height>
+     </rect>
+    </property>
+    <property name="cursor">
+     <cursorShape>ArrowCursor</cursorShape>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QWidget#groupBox_2{background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0 rgba(175, 175, 175, 255));
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+border: none;;}
+
+</string>
+    </property>
+    <property name="title">
+     <string>Pedidos</string>
+    </property>
+    <property name="alignment">
+     <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+    </property>
+    <property name="flat">
+     <bool>false</bool>
+    </property>
+    <widget class="QLabel" name="label_7">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>30</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Cédula cliente:</string>
+     </property>
+    </widget>
+    <widget class="QLineEdit" name="cedulaClienteInput">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>60</y>
+       <width>181</width>
+       <height>20</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;
+</string>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+    <widget class="QComboBox" name="productoElegido">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>60</y>
+       <width>191</width>
+       <height>22</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="mouseTracking">
+      <bool>true</bool>
+     </property>
+     <property name="tabletTracking">
+      <bool>true</bool>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">border-radius:10px;</string>
+     </property>
+     <property name="editable">
+      <bool>false</bool>
+     </property>
+     <property name="currentText">
+      <string/>
+     </property>
+     <property name="currentIndex">
+      <number>-1</number>
+     </property>
+     <property name="placeholderText">
+      <string notr="true">Seleccione el cultivo</string>
+     </property>
+     <item>
+      <property name="text">
+       <string>Producto1</string>
+      </property>
+     </item>
+    </widget>
+    <widget class="QLabel" name="label_8">
+     <property name="geometry">
+      <rect>
+       <x>290</x>
+       <y>30</y>
+       <width>161</width>
+       <height>31</height>
+      </rect>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot;;</string>
+     </property>
+     <property name="text">
+      <string>Producto:</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="agregarFacturaBoton">
+     <property name="geometry">
+      <rect>
+       <x>560</x>
+       <y>60</y>
+       <width>141</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#agregarFacturaBoton{border-radius:10px;
+color: rgb(255, 255, 255);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0 rgba(116, 116, 116, 255));
+border: 1px;
+border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(220, 220, 220, 255));}
+QWidget#agregarFacturaBoton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(240, 240, 240, 255));
+	color: rgb(68, 68, 68);
+	border-color: rgb(68, 68, 68);
+	shadow: large;
+}</string>
+     </property>
+     <property name="text">
+      <string>Agregar a la factura</string>
+     </property>
+    </widget>
+    <widget class="Line" name="line">
+     <property name="geometry">
+      <rect>
+       <x>20</x>
+       <y>20</y>
+       <width>720</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="autoFillBackground">
+      <bool>false</bool>
+     </property>
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+    </widget>
+    <widget class="QGroupBox" name="groupBox_3">
+     <property name="geometry">
+      <rect>
+       <x>25</x>
+       <y>110</y>
+       <width>710</width>
+       <height>281</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>ArrowCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#groupBox_3{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(220, 220, 220, 255));
+font: 12pt &quot;MS Shell Dlg 2&quot;;
+border: none;
+border-radius: 5px;}
+
+</string>
+     </property>
+     <property name="title">
+      <string>Factura</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+     </property>
+     <property name="flat">
+      <bool>false</bool>
+     </property>
+     <widget class="Line" name="line_2">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>20</y>
+        <width>720</width>
+        <height>16</height>
+       </rect>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listWidget">
+      <property name="geometry">
+       <rect>
+        <x>20</x>
+        <y>50</y>
+        <width>670</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QPushButton" name="volverMenuBoton">
+     <property name="geometry">
+      <rect>
+       <x>580</x>
+       <y>410</y>
+       <width>140</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#volverMenuBoton{border-radius:10px;
+color: rgb(255, 255, 255);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0 rgba(116, 116, 116, 255));
+border: 1px;
+border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(220, 220, 220, 255));}
+QWidget#volverMenuBoton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(240, 240, 240, 255));
+	color: rgb(68, 68, 68);
+	border-color: rgb(68, 68, 68);
+	shadow: large;
+}</string>
+     </property>
+     <property name="text">
+      <string>Volver al menú</string>
+     </property>
+    </widget>
+    <widget class="QPushButton" name="realizarPedidoBoton">
+     <property name="geometry">
+      <rect>
+       <x>40</x>
+       <y>410</y>
+       <width>141</width>
+       <height>23</height>
+      </rect>
+     </property>
+     <property name="cursor">
+      <cursorShape>PointingHandCursor</cursorShape>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">QWidget#realizarPedidoBoton{border-radius:10px;
+color: rgb(255, 255, 255);
+background-color: qlineargradient(spread:pad, x1:0, y1:0.625, x2:1, y2:0.551, stop:0 rgba(116, 116, 116, 255));
+border: 1px;
+border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:1 rgba(220, 220, 220, 255));}
+QWidget#realizarPedidoBoton:hover{
+	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:1, y2:1, stop:0 rgba(240, 240, 240, 255));
+	color: rgb(68, 68, 68);
+	border-color: rgb(68, 68, 68);
+	shadow: large;
+}</string>
+     </property>
+     <property name="text">
+      <string>Realizar pedido</string>
+     </property>
+    </widget>
+    <widget class="QLabel" name="mensajeRetorno">
+     <property name="geometry">
+      <rect>
+       <x>250</x>
+       <y>410</y>
+       <width>271</width>
+       <height>16</height>
+      </rect>
+     </property>
+     <property name="text">
+      <string/>
+     </property>
+    </widget>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
