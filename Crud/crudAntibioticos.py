@@ -11,9 +11,9 @@ class CrudAntibiotico(ICrud):
         self.antibioticos = []
     
 
-    def create_antibiotico(self,**kwargs):
+    def create(self,**kwargs):
         try:
-            nuevo_antibiotico = Antibioticos(**kwargs)
+            nuevo_antibiotico = Antibioticos(kwargs["nombre_producto"],kwargs["dosis"],kwargs["tipo_animal"],kwargs["valor_producto"])
             self.antibioticos.append(nuevo_antibiotico)
             mensaje = "Antibiotico creado exitosamente"
             return {"Mensaje": mensaje, "Antibiotico": nuevo_antibiotico}
@@ -26,7 +26,7 @@ class CrudAntibiotico(ICrud):
         return Antibioticos
     
 
-    def buscar_antibioticos(self, nombre_producto=None):
+    def buscar(self, nombre_producto=None):
         nombre_producto = nombre_producto.upper() if nombre_producto else None
         for antibiotico in self.antibioticos:
             if nombre_producto == antibiotico.nombre_producto.upper():
@@ -48,7 +48,7 @@ class CrudAntibiotico(ICrud):
             mensaje = "No se encontró el antibiotico"
             return {"Mensaje": mensaje, "Antibiotico": None}
     
-    def delete_antibiotico(self, nombre_producto=None):
+    def delete(self, nombre_producto=None):
         antibiotico = self.buscar_antibioticos(nombre_producto)
         if antibiotico["Antibiotico"] != None:
             self.antibioticos.remove(antibiotico["Antibiotico"])

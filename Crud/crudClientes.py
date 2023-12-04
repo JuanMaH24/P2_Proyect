@@ -10,8 +10,8 @@ class CrudClientes(ICrud):
     def __init__(self):
         self.clientes = []
     
-    def create_cliente(self, **kwargs):
-        nuevo_cliente = Clientes(**kwargs)
+    def create(self, **kwargs):
+        nuevo_cliente = Clientes(kwargs["nombre_cliente"], kwargs["cedula_cliente"])
         self.clientes.append(nuevo_cliente)
         mensaje = "Cliente creado exitosamente"
         return {"Mensaje": mensaje, "Cliente": nuevo_cliente}
@@ -20,7 +20,7 @@ class CrudClientes(ICrud):
         clientes = self.clientes 
         return clientes
     
-    def buscar_cedula(self,cedula_cliente=None):
+    def buscar(self,cedula_cliente=None):
         for cliente in self.clientes:
             if cedula_cliente == cliente.cedula:
                 mensaje = "Cliente encontrado"
@@ -31,7 +31,7 @@ class CrudClientes(ICrud):
     
     #Agregar facturas a un cliente ya creado
     def update_factura_cliente(self, cedula_cliente = None,factura = None):
-        cliente = self.buscar_cedula(cedula_cliente)
+        cliente = self.buscar(cedula_cliente)
         if cliente["Cliente"] != None:
             cliente["Cliente"].asociar_factura(factura)
             mensaje= "Se actualizó correctamente las facturas del cliente"
@@ -41,7 +41,7 @@ class CrudClientes(ICrud):
             return {"Mensaje": mensaje, "Cliente": None}
 
     def delete_cliente(self, cedula_cliente = None):
-        cliente = self.buscar_cedula(cedula_cliente)
+        cliente = self.buscar(cedula_cliente)
         if cliente["Cliente"] != None:
             self.clientes.remove(cliente["Cliente"])
             mensaje= "Se eliminó correctamente el cliente"
