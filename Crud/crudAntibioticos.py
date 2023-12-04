@@ -49,7 +49,7 @@ class CrudAntibiotico(ICrud):
             return {"Mensaje": mensaje, "Antibiotico": None}
     
     def delete(self, nombre_producto=None):
-        antibiotico = self.buscar_antibioticos(nombre_producto)
+        antibiotico = self.buscar(nombre_producto)
         if antibiotico["Antibiotico"] != None:
             self.antibioticos.remove(antibiotico["Antibiotico"])
             mensaje= "Se eliminó correctamente el antibiotico"

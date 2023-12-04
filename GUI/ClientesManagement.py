@@ -25,7 +25,7 @@ class ClientesManagement():
         self.menu_clientes.verClientesBoton.clicked.connect(self.ver_todos_clientes_ventana)
         self.menu_clientes.buscarClienteBoton.clicked.connect(self.buscar_cliente_ventana)
         self.menu_clientes.eliminarClienteBoton.clicked.connect(self.eliminar_cliente_ventana)
-
+        self.menu_clientes.volverMenuBoton.clicked.connect(lambda: self.volver_menu_principal(self.menu_clientes))
         self.productos_agregados=[]
 
         self.pedido_form.agregarFacturaBoton.clicked.connect(self.agregar_producto_factura)
@@ -99,7 +99,9 @@ class ClientesManagement():
         nombre_cliente=  self.agregar_cliente.nombreClienteInput.text()
         mensaje_retorno = main.nuevo_cliente(cedula,nombre_cliente)
         self.pop_up(mensaje_retorno)
-        self.volver_menu_principal(self.agregar_cliente)
+        self.agregar_cliente.cedulaClienteInput.clear()
+        self.agregar_cliente.nombreClienteInput.clear()
+        # self.volver_menu_principal(self.agregar_cliente)
 
     def visualizar_facturas(self, facturas):
         self.ver_todos_clientes.listWidget.clear()
@@ -121,7 +123,7 @@ class ClientesManagement():
             self.visualizar_facturas(lista_clientes[0].factura)
         else:
             self.pop_up("No hay más clientes")
-            self.volver_menu_principal(self.ver_todos_clientes)    
+            # self.volver_menu_principal(self.ver_todos_clientes)    
 
     def siguiente_cliente(self):
         self.todos_clientes.pop(0)
@@ -131,16 +133,17 @@ class ClientesManagement():
         cedula= self.ver_cliente.cedulaClienteInput.text()
         cliente_buscado = main.buscar_cliente(cedula)
         if(cliente_buscado is not None):
-            self.ver_cliente.cedulaClienteLabel.setText(cedula)
-            self.ver_cliente.nombreClienteLabel.setText(cliente_buscado.nombre)
+            self.ver_cliente.cedulaClienteInput.setText(cedula)
+            self.ver_cliente.nombreClienteLabel.setText(cliente_buscado.nombre_cliente)
             self.visualizar_facturas(cliente_buscado.factura)
         else:
             self.pop_up("El cliente no existe")
-            self.volver_menu_principal(self.ver_cliente) 
+            # self.volver_menu_principal(self.ver_cliente) 
 
         
     def borrar_cliente(self):
         cedula= self.eliminar_cliente.cedulaClienteInput.text()
         mensaje_retorno= main.borrar_cliente(cedula)
         self.pop_up(mensaje_retorno)
-        self.volver_menu_principal(self.eliminar_cliente) 
+        self.eliminar_cliente.cedulaClienteInput.clear()
+        # self.volver_menu_principal(self.eliminar_cliente) 

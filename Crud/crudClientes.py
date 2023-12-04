@@ -30,7 +30,7 @@ class CrudClientes(ICrud):
         return {"Mensaje": mensaje, "Cliente": None}
     
     #Agregar facturas a un cliente ya creado
-    def update_factura_cliente(self, cedula_cliente = None,factura = None):
+    def update(self, cedula_cliente = None,factura = None):
         cliente = self.buscar(cedula_cliente)
         if cliente["Cliente"] != None:
             cliente["Cliente"].asociar_factura(factura)
@@ -40,7 +40,7 @@ class CrudClientes(ICrud):
             mensaje= "No se encontró al cliente"
             return {"Mensaje": mensaje, "Cliente": None}
 
-    def delete_cliente(self, cedula_cliente = None):
+    def delete(self, cedula_cliente = None):
         cliente = self.buscar(cedula_cliente)
         if cliente["Cliente"] != None:
             self.clientes.remove(cliente["Cliente"])

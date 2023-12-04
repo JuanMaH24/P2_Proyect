@@ -14,7 +14,7 @@ antibioticos = crudAntibioticos.CrudAntibiotico()
 
 def verificar_numero(num):
     try:
-        num=float(num)
+        num == int(num)
         return True
     except ValueError:
         return False
@@ -36,7 +36,7 @@ def realizar_pedido(cedula, productos_agregados):
             for producto in productos_agregados:
                 factura_creada = crudPedidos.actualizar_antibiotico(factura_creada["Factura"], producto)
             
-            clientes.update_factura_cliente(cedula,factura_creada["Factura"])
+            clientes.update(cedula,factura_creada["Factura"])
             return "Factura creada y asociada correctamente"
         else:
             return "Cliente no existente"
@@ -75,51 +75,59 @@ def nuevo_antibiotico(nombre_producto, dosis, tipo_animal, valor_producto):
     if antibiotico_buscado["Antibiotico"] != None:
         return antibiotico_buscado["Mensaje"]
     else:
-        if(verificar_numero(valor_producto) == True):
+        val_producto= int(valor_producto)
+        if(verificar_numero(val_producto) == True):
             antibiotico_creado = antibioticos.create(nombre_producto = nombre_producto,dosis = int(dosis),tipo_animal = tipo_animal,valor_producto = int(valor_producto))
             return antibiotico_creado["Mensaje"]
         else:
-            return "Valor del antibiotico no válido"
+            return "Val no válido"
 
 def borrar_antibiotico(nombre):
     antibiotico_buscado = antibioticos.buscar(nombre)
     if antibiotico_buscado["Antibiotico"] != None:
-        antibiotico_eliminado = antibioticos.delete(nombre = nombre)
+        antibiotico_eliminado = antibioticos.delete(nombre_producto=nombre)
         return antibiotico_eliminado["Mensaje"]
     else:
-        return "Este antibiotico no existe"
+        return "No existe"
 
 # PRODUCTOS CONTROL #####################################################################################################################
 def productos_control():
     return productos.productos_control
 
 def nuevo_producto(registro_ICA, frecuencia_aplicacion, valor_producto, nombre_producto, propiedad_tipo, tipo):
-    if (verificar_numero(frecuencia_aplicacion) == False ): 
-        return "Frecuencia de aplicación inválida"
+    # if frecuencia_aplicacion == "":
+    #     return "Frec. None"
+    # try:
+    #     frecuencia_aplicacion == int(frecuencia_aplicacion)
+    # except ValueError:
+    #     return "Frec.A None"
+    
+    # if (verificar_numero(frecuencia_aplicacion) == False):
+    #     return "Frec.A None"
         
     if (verificar_numero(valor_producto) == False ): 
-        return "Valor inválido" 
+        return "Val. None" 
+
 
     if tipo == "fertilizante":
         if (verificar_numero(propiedad_tipo) == False):
-            return "Ultima aplicación inválida"
+            return "Ultima Ap. None"
         producto_buscado = productos.buscar(registro_ICA)
         if producto_buscado["Producto_control"] != None:
-            return "El Registro ICA ya existe"
+            return "RegistroICA existe"
         else:
-            producto_creado = productos.create(registro_ICA=registro_ICA, nombre_producto=nombre_producto, frecuencia_aplicacion=frecuencia_aplicacion, valor_producto=int(valor_producto), propiedad_tipo=propiedad_tipo)
-            return "Sisa se creo"
+            producto_creado = productos.create(registro_ICA=registro_ICA, nombre_producto=nombre_producto, frecuencia_aplicacion=int(frecuencia_aplicacion), valor_producto=int(valor_producto), propiedad_tipo=int(propiedad_tipo))
+            return "Se creo"
     else:
         if (verificar_numero(propiedad_tipo) == False):
-            return "Periodo de carencia inválida"
+            return "P.C inválida"
         
         producto_buscado = productos.buscar(registro_ICA)
         if producto_buscado["Producto_control"] != None:
             return "El Registro ICA ya existe"
         else:
-            producto_creado = productos.create_control_plagas(registro_ICA=registro_ICA, nombre_producto=nombre_producto, frecuencia_aplicacion=frecuencia_aplicacion, valor_producto=int(valor_producto), propiedad_tipo=propiedad_tipo)
-            return "Sisa se creo"
-
+            producto_creado = productos.create_control_plagas(registro_ICA=registro_ICA, nombre_producto=nombre_producto, frecuencia_aplicacion=int(frecuencia_aplicacion), valor_producto=int(valor_producto), propiedad_tipo=int(propiedad_tipo))
+            return "Se creo"
 def borrar_producto(registro_ICA):
     producto_buscado = productos.buscar(registro_ICA = registro_ICA)
     if producto_buscado["Producto_control"] != None:
@@ -133,15 +141,18 @@ def buscar_producto(registro_ICA):
     return producto_buscado["Producto_control"]
 
 def actualizar_productos(registro_ICA, nombre_producto, frecuencia, valor_producto, propiedad_tipo):
-    if (verificar_numero(frecuencia) == False ): 
-        return "Frecuencia de aplicación inválida"
-        
-    if (verificar_numero(valor_producto) == False ): 
-        return "Valor inválido" 
+   
+    if (frecuencia == int(frecuencia) == False):
+        return "Frec. None"
+    else:
+        frecuencia = int(frecuencia)
     
+    # if (verificar_numero(frecuencia_aplicacion) == False):
+    #     return "Frec.A None"
+    if (verificar_numero(valor_producto) == False ): 
+        return "Val. None" 
     if (verificar_numero(propiedad_tipo) == False):
         return "Valor numerico inválido"
-
     produc_actualizado = productos.update_producto_control(registro_ICA, nombre_producto, frecuencia, valor_producto, propiedad_tipo)
     return produc_actualizado["Mensaje"]
 

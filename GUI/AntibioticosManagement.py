@@ -62,14 +62,18 @@ class ManejadorAntibioticos:
         valor_producto = self.agregar_antibiotico.valorAntibioticoInput.text()
         mensaje_retorno = main.nuevo_antibiotico(nombre, dosis, tipo_animal, valor_producto)
         self.pop_up(mensaje_retorno)
-        self.volver_menu_principal(self.agregar_antibiotico)
+        self.agregar_antibiotico.nombreAntibioticoInput.clear()
+        self.agregar_antibiotico.dosisAntibioticoInput.clear()
+        self.agregar_antibiotico.valorAntibioticoInput.clear()
+        # self.volver_menu_principal(self.agregar_antibiotico)
 
     def visualizar_antibioticos(self, lista_antibioticos):
         for antibiotico in lista_antibioticos:
             self.ver_antibioticos.listWidget.addItem(f"{antibiotico.nombre_producto} -- {antibiotico.dosis_antibiotico} -- {antibiotico.tipo_animal} -- {antibiotico.valor_producto}")
 
     def borrar_antibiotico(self):
-        nombre = self.eliminar_antibiotico.cedulaClienteInput.text()
+        nombre = self.eliminar_antibiotico.nombreAntibioticoInput.text()
         mensaje_retorno = main.borrar_antibiotico(nombre)
         self.pop_up(mensaje_retorno)
-        self.volver_menu_principal(self.eliminar_antibiotico)
+        self.eliminar_antibiotico.nombreAntibioticoInput.clear()
+        # self.volver_menu_principal(self.eliminar_antibiotico)
