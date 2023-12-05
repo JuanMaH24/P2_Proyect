@@ -91,6 +91,9 @@ class ClientesManagement():
         mensaje_retorno = main.realizar_pedido(cedula, self.productos_agregados)
         self.pop_up(mensaje_retorno)
         self.pedido_form.hide()
+        self.pedido_form.cedulaClienteInput.clear()
+        self.pedido_form.listWidget.clear()
+        self.productos_agregados=[]
         self.volver_menu_principal(self.pedido_form)
 
 
